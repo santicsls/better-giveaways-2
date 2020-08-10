@@ -1,0 +1,22 @@
+# ---------------------------------
+# MESSAGES BROADCASTED TO EVERYBODY
+# ---------------------------------
+
+# prefix is used only for broadcasted messages
+chat-prefix: '&6[&rGIVEAWAY&6]'
+
+giveaway-start: '&6&lA NEW GIVEAWAY STARTS RIGHT NOW!!!'
+giveaway-info: '&6Use /giveaway to join!'
+giveaway-end: '&6And the winner is... &l'
+
+# in order to prevent spam, increase every-x-joined
+giveaway-playercount: '&6players currently in the giveaway'
+every-x-joined: 1
+
+# ---------------------------------
+# MESSAGES SENT TO PLAYERS
+# ---------------------------------
+
+giveaway-joined: '&6You are in the giveaway! Wish you luck!'
+giveaway-already-in: '&cYou already joined the giveaway!'
+giveaway-not-found: '&cThere are no giveaways currently :('

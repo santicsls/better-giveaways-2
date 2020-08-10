@@ -1,0 +1,15 @@
+name: BetterGiveaways
+version: ${project.version}
+main: me.kartonixon.bettergiveaways.BetterGiveaways
+api-version: 1.16
+authors: [kartonixon]
+description: Simple and easy to use giveaway system
+
+commands:
+  giveaway:
+    description: Joins the giveaway
+
+permissions:
+  bettergiveaways.use:
+    description: Allows starting/ending giveaways
+    default: op
