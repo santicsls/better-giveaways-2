@@ -10,6 +10,6 @@ commands:
     description: Joins the giveaway
 
 permissions:
-  bettergiveaways.use:
+  bettergiveaways.manage:
     description: Allows starting/ending giveaways
     default: op
