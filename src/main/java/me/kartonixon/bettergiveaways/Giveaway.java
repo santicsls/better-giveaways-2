@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class Giveaway implements CommandExecutor {
-
+    
     private final BetterGiveaways plugin;
 
     private boolean currentlyGiveaway;
@@ -36,33 +36,51 @@ public class Giveaway implements CommandExecutor {
 
                 } else {
 
+                    Player player = (Player) sender;
+
                     if (!currentlyGiveaway) {
 
-                        sender.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.getCustomConfig().getString("giveaway-not-found")));
+                        for (String message : plugin.getCustomConfig().getStringList("giveaway-not-found")) {
+
+                            player.sendMessage(ChatColor.translateAlternateColorCodes('&', message));
+
+                        }
 
                     } else {
-
-                        Player player = (Player) sender;
 
                         if (!playersInGiveaway.contains(player)) {
 
                             playersInGiveaway.add(player);
-                            sender.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.getCustomConfig().getString("giveaway-joined")));
+
+                            for (String message : plugin.getCustomConfig().getStringList("giveaway-joined")) {
+
+                                player.sendMessage(ChatColor.translateAlternateColorCodes('&', message));
+
+                            }
 
                             int mod = plugin.getCustomConfig().getInt("every-x-joined");
 
                             if (playersInGiveaway.size() % mod == 0) {
 
-                                String message = plugin.getCustomConfig().getString("chat-prefix") + plugin.getCustomConfig().getString("giveaway-on-player-join");
-                                String formattedMessage = message.replace("{count}", Integer.toString(playersInGiveaway.size()));
+                                String prefix = plugin.getCustomConfig().getString("chat-prefix");
 
-                                Bukkit.broadcastMessage(ChatColor.translateAlternateColorCodes('&',
-                                        formattedMessage));
+                                for (String message : plugin.getCustomConfig().getStringList("giveaway-on-player-join")) {
+
+                                    String formattedMessage = message.replace("{count}", Integer.toString(playersInGiveaway.size()));
+                                    Bukkit.broadcastMessage(ChatColor.translateAlternateColorCodes('&', prefix + formattedMessage));
+
+                                }
 
                             }
 
                         } else {
-                            sender.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.getCustomConfig().getString("giveaway-already-in")));
+
+                            for (String message : plugin.getCustomConfig().getStringList("giveaway-already-in")) {
+
+                                player.sendMessage(ChatColor.translateAlternateColorCodes('&', message));
+
+                            }
+
                         }
 
                     }
@@ -75,47 +93,69 @@ public class Giveaway implements CommandExecutor {
 
             if (sender.hasPermission("bettergiveaways.manage")) {
 
-                //TODO: Prevent from starting over without ending first
-
                 if (args[0].equalsIgnoreCase("start")) {
 
-                    Bukkit.broadcastMessage(ChatColor.translateAlternateColorCodes('&',
-                            plugin.getCustomConfig().getString("chat-prefix") + plugin.getCustomConfig().getString("giveaway-start")));
-                    Bukkit.broadcastMessage(ChatColor.translateAlternateColorCodes('&',
-                            plugin.getCustomConfig().getString("chat-prefix") + plugin.getCustomConfig().getString("giveaway-info")));
+                    if (currentlyGiveaway == true) {
+
+                        sender.sendMessage(ChatColor.RED + "You have to end the giveaway first!");
+                        return true;
+
+                    }
+
+                    String prefix = plugin.getCustomConfig().getString("chat-prefix");
+
+                    for (String message : plugin.getCustomConfig().getStringList("giveaway-start")) {
+
+                        Bukkit.broadcastMessage(ChatColor.translateAlternateColorCodes('&', prefix + message));
+
+                    }
 
                     currentlyGiveaway = true;
                     return true;
 
                 }
 
-                //TODO: Prevent from ending without starting first
-
                 if (args[0].equalsIgnoreCase("end")) {
+
+                    if (!currentlyGiveaway) {
+
+                        sender.sendMessage(ChatColor.RED + "You have to start the giveaway first!");
+                        return true;
+
+                    }
 
                     if (playersInGiveaway.size() == 0) {
 
-                        Bukkit.broadcastMessage(ChatColor.translateAlternateColorCodes('&',
-                                plugin.getCustomConfig().getString("chat-prefix") + plugin.getCustomConfig().getString("giveaway-end-empty")));
-                        currentlyGiveaway = false;
+                        String prefix = plugin.getCustomConfig().getString("chat-prefix");
 
-                    } else {
+                        for (String message : plugin.getCustomConfig().getStringList("giveaway-end-empty")) {
 
-                        Random r = new Random();
-                        int randomIndex = r.nextInt(playersInGiveaway.size());
+                            Bukkit.broadcastMessage(ChatColor.translateAlternateColorCodes('&', prefix + message));
 
-                        String winner = playersInGiveaway.get(randomIndex).getName();
-                        int playerCount = playersInGiveaway.size();
-
-                        String message = plugin.getCustomConfig().getString("chat-prefix") + plugin.getCustomConfig().getString("giveaway-end-winner");
-                        String formattedMessage = message.replace("{winner}", winner).replace("{count}", Integer.toString(playerCount));
-
-                        Bukkit.broadcastMessage(ChatColor.translateAlternateColorCodes('&', formattedMessage));
+                        }
 
                         currentlyGiveaway = false;
-                        playersInGiveaway.clear();
+                        return true;
 
                     }
+
+                    Random r = new Random();
+                    int randomIndex = r.nextInt(playersInGiveaway.size());
+                    String winner = playersInGiveaway.get(randomIndex).getName();
+
+                    int playerCount = playersInGiveaway.size();
+
+                    String prefix = plugin.getCustomConfig().getString("chat-prefix");
+
+                    for (String message : plugin.getCustomConfig().getStringList("giveaway-end-winner")) {
+
+                        String formattedMessage = message.replace("{winner}", winner).replace("{count}", Integer.toString(playerCount));
+                        Bukkit.broadcastMessage(ChatColor.translateAlternateColorCodes('&', prefix + formattedMessage));
+
+                    }
+
+                    currentlyGiveaway = false;
+                    playersInGiveaway.clear();
 
                     return true;
 

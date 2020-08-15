@@ -3,21 +3,23 @@
 # ---------------------------------
 
 # Prefix is used only for broadcasted messages
-chat-prefix: '&6[&rGIVEAWAY&6] '
+chat-prefix: '&6[&rGIVEAWAY&6]&r '
 
-giveaway-start: '&6&lA NEW GIVEAWAY STARTS RIGHT NOW!!!'
-
-giveaway-info: '&6Use /giveaway to join!'
+giveaway-start:
+  - '&6&lA NEW GIVEAWAY STARTS RIGHT NOW!!!'
+  - '&rUse &6/giveaway&r to join!'
 
 # Use {winner} to display winner's nickname
 # Use {count} to display number of players that joined the giveaway
-giveaway-end-winner: '&6{count} players joined the giveaway. And the winner is... &l{winner}'
+giveaway-end-winner:
+  - '&6{count} players joined the giveaway. And the winner is... &l{winner}'
 
-giveaway-end-empty: '&6Nobody joined the giveaway :('
-
+giveaway-end-empty:
+  - '&6Nobody joined the giveaway :('
 
 # Use {count} to display number of players that joined the giveaway
-giveaway-on-player-join: '&6{count} players currently in the giveaway'
+giveaway-on-player-join:
+  - '&6{count} players currently in the giveaway'
 
 # In order to prevent flooding the chat, increase every-x-joined
 every-x-joined: 1
@@ -26,8 +28,11 @@ every-x-joined: 1
 # MESSAGES SENT DIRECTLY TO PLAYERS
 # ---------------------------------
 
-giveaway-joined: '&6You are in the giveaway! Wish you luck!'
+giveaway-joined:
+  - '&6You are in the giveaway! Wish you luck!'
 
-giveaway-already-in: '&cYou already joined the giveaway!'
+giveaway-already-in:
+  - '&cYou already joined the giveaway!'
 
-giveaway-not-found: '&cThere are no giveaways currently :('
+giveaway-not-found:
+  - '&cThere are no giveaways currently :('
