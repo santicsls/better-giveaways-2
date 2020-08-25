@@ -22,7 +22,7 @@ giveaway-on-player-join:
   - '&6{count} players currently in the giveaway'
 
 # In order to prevent flooding the chat, increase every-x-joined
-every-x-joined: 1
+every-x-joined: 5
 
 # ---------------------------------
 # MESSAGES SENT DIRECTLY TO PLAYERS

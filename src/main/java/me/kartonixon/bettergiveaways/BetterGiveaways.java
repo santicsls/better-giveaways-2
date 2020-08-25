@@ -30,17 +30,28 @@ public final class BetterGiveaways extends JavaPlugin {
     }
 
     private void createCustomConfig() {
+
         customConfigFile = new File(getDataFolder(), "custom.yml");
+
         if (!customConfigFile.exists()) {
+
             customConfigFile.getParentFile().mkdirs();
             saveResource("custom.yml", false);
+
         }
 
         customConfig= new YamlConfiguration();
+
         try {
+
             customConfig.load(customConfigFile);
+
         } catch (IOException | InvalidConfigurationException e) {
+
             e.printStackTrace();
+
         }
+
     }
+
 }

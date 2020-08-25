@@ -161,6 +161,26 @@ public class Giveaway implements CommandExecutor {
 
                 }
 
+                if (args[0].equalsIgnoreCase("list")) {
+
+                    if (!currentlyGiveaway) {
+
+                        sender.sendMessage(ChatColor.RED + "You have to start the giveaway first!");
+                        return true;
+
+                    }
+
+                    ArrayList<String> nicknames = new ArrayList<String>();
+
+                    for (Player player : playersInGiveaway) {
+                        nicknames.add(player.getName());
+                    }
+
+                    sender.sendMessage(ChatColor.GREEN + "Currently in the giveaway:");
+                    sender.sendMessage(ChatColor.GREEN + nicknames.toString());
+
+                }
+
             } else {
 
                 sender.sendMessage(ChatColor.RED + "You don't have permission to do that");
