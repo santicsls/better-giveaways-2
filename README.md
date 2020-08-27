@@ -1,6 +1,44 @@
 # BetterGiveaways
 
+![](https://img.shields.io/spiget/downloads/tbd)
+![](https://img.shields.io/github/issues/kartonixon/better-giveaways)
+![](https://img.shields.io/github/license/kartonixon/better-giveaways)
+
+> Simple and easy to use Minecraft giveaway system
+
 ![](preview.gif)
 
-Simple and easy to use giveaway system
+A Minecraft Spigot plugin that allows players to create simple giveaways. The winner will always be chosen at random, making the giveaways fair for participants.
 
+[SpigotMC Page](https://www.spigotmc.org/resources/)
+
+Tested Minecraft Versions: **1.16**
+
+## Installation
+
+- Download .jar file
+- Make sure that you are using a Spigot Minecraft server running one of the supported versions
+- Put the .jar file in the `/plugins` folder
+- Start the server
+- Enjoy!
+
+## Commands
+
+Command | Description
+------- | -----------
+`/giveaway` | Does not require any permissions. Joins the ongoing giveaway.
+`/giveaway start` | Requires `bettergiveaways.manage` permission. Starts the giveaway. 
+`/giveaway end` | Requires `bettergiveaways.manage` permission. Ends the giveaway and randomly picks a winner.
+`/giveaway list` | Requires `bettergiveaways.manage` permission. Displays a list of players that joined the giveaway.
+
+## Config 
+
+You can customize almost all messages sent by this plugin in `custom.yml` file, that generates automagically inside the `/plugins/BetterGiveaways` folder. Config supports usual Minecraft-style text formatting.
+
+## Technologies used
+- Spigot API
+- Java
+
+## Contributing
+
+If you have any **issues** with this plugin or any **ideas** on how to improve it, please use GitHub Issues section! Thank you ❤
