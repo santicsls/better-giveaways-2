@@ -1,6 +1,6 @@
 # BetterGiveaways
 
-![](https://img.shields.io/spiget/downloads/tbd)
+![](https://img.shields.io/spiget/downloads/83231)
 ![](https://img.shields.io/github/issues/kartonixon/better-giveaways)
 ![](https://img.shields.io/github/license/kartonixon/better-giveaways)
 
@@ -10,7 +10,7 @@
 
 A Minecraft Spigot plugin that allows players to create simple giveaways. The winner will always be chosen at random, making the giveaways fair for participants.
 
-[SpigotMC Page](https://www.spigotmc.org/resources/)
+Share your thoughts at [SpigotMC](https://www.spigotmc.org/resources/bettergiveaways.83231/) ❤
 
 Tested Minecraft Versions: **1.16**
 
@@ -41,4 +41,4 @@ You can customize almost all messages sent by this plugin in `custom.yml` file, 
 
 ## Contributing
 
-If you have any **issues** with this plugin or any **ideas** on how to improve it, please use GitHub Issues section! Thank you ❤
+If you have any **issues** with this plugin or **ideas** on how to improve it, please use GitHub Issues section! Thank you ❤
