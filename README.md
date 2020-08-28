@@ -1,5 +1,6 @@
 # BetterGiveaways
 
+![](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2Fkartonixon%2Fbetter-giveaways&count_bg=%2379C83D&title_bg=%23555555&icon=github.svg&icon_color=%23E7E7E7&title=visits&edge_flat=false)
 ![](https://img.shields.io/spiget/downloads/83231)
 ![](https://img.shields.io/github/issues/kartonixon/better-giveaways)
 ![](https://img.shields.io/github/license/kartonixon/better-giveaways)
