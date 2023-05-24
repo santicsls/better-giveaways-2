@@ -40,10 +40,14 @@ public class Giveaway implements CommandExecutor {
 
                     if (!currentlyGiveaway) {
 
+                        String prefix = plugin.getCustomConfig().getString("chat-prefix");
+
                         for (String message : plugin.getCustomConfig().getStringList("giveaway-not-found")) {
 
-                            player.sendMessage(ChatColor.translateAlternateColorCodes('&', message));
+                            // Send message to ONLY ADMIN with the permission "bettergiveaways.manage"
 
+                            sender.sendMessage(ChatColor.translateAlternateColorCodes('&', prefix + message));
+    
                         }
 
                     } else {
@@ -199,7 +203,7 @@ public class Giveaway implements CommandExecutor {
 
                         String prefix = plugin.getCustomConfig().getString("chat-prefix");
 
-                        for (String message : plugin.getCustomConfig().getStringList("giveaway-start-empty")) {
+                        for (String message : plugin.getCustomConfig().getStringList("giveaway-start-first")) {
 
                             // Send message to ONLY ADMIN with the permission "bettergiveaways.manage"
 
@@ -252,7 +256,7 @@ public class Giveaway implements CommandExecutor {
                     }
                     return true;
 
-            }
+                }
 
             } else {
 

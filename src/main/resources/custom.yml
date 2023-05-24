@@ -6,8 +6,10 @@
 chat-prefix: ' &2&lGiveaway &8▸ '
 
 giveaway-start:
+  - '&r'
   - '&2&lA NEW GIVEAWAY STARTS RIGHT NOW!'
   - '&fUse &a/giveaway&f to join!'
+  - '&f'
 
 # Use {winner} to display winner's nickname
 # Use {count} to display number of players that joined the giveaway
@@ -42,16 +44,16 @@ giveaway-already-in:
   - '&cYou already joined the giveaway.'
 
 giveaway-not-found:
-  - '&cThere are no giveaways currently.'
+  - '&cThere are no giveaways currently. You have to start the giveaway first'
 
 giveaway-start-first:
-  - '&cYou have to start the giveaway first.'
+  - '&cList not found. You have to start the giveaway first.'
 
 giveaway-end-first:
-  - '&cYou have to end the giveaway first.'
+  - '&cYou already started the giveaway. End the giveaway first.'
 
 giveaway-reload:
-  - '&aConfig reloaded.'
+  - '&aConfiguration reloaded.'
 
-giveaway-no-permissions:
+giveaway-no-permission:
   - '&cNo permissions for this action.'
