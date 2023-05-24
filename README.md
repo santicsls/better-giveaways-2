@@ -1,4 +1,4 @@
-# BetterGiveaways
+# BetterGiveaways 2 - Fork Version
 
 ![](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2Fkartonixon%2Fbetter-giveaways&count_bg=%2379C83D&title_bg=%23555555&icon=github.svg&icon_color=%23E7E7E7&title=visits&edge_flat=false)
 ![](https://img.shields.io/spiget/downloads/83231)
@@ -6,6 +6,7 @@
 ![](https://img.shields.io/github/license/kartonixon/better-giveaways)
 
 > Simple and easy to use Minecraft giveaway system
+> Made by kartonixon, recoded by santicsls
 
 ![](preview.gif)
 
@@ -13,7 +14,7 @@ A Minecraft Spigot plugin that allows players to create simple giveaways. The wi
 
 Share your thoughts at [SpigotMC](https://www.spigotmc.org/resources/bettergiveaways.83231/) ❤
 
-Tested Minecraft Versions: **1.16**
+Tested Minecraft Versions: **1.16, 1.18.2 (LATEST BUILD)**
 
 ## Installation
 
@@ -31,6 +32,7 @@ Command | Description
 `/giveaway start` | Requires `bettergiveaways.manage` permission. Starts the giveaway. 
 `/giveaway end` | Requires `bettergiveaways.manage` permission. Ends the giveaway and randomly picks a winner.
 `/giveaway list` | Requires `bettergiveaways.manage` permission. Displays a list of players that joined the giveaway.
+`/giveaway reload` | Requires `bettergiveaways.manage` permission. Reload config.
 
 ## Config 
 
