@@ -95,16 +95,31 @@ public class Giveaway implements CommandExecutor {
 
                 if (args[0].equalsIgnoreCase("start")) {
 
+                    // If admin tries to start a giveaway while one is already running
+
                     if (currentlyGiveaway == true) {
 
-                        sender.sendMessage(ChatColor.RED + "You have to end the giveaway first!");
+                        String prefix = plugin.getCustomConfig().getString("chat-prefix");
+
+                        for (String message : plugin.getCustomConfig().getStringList("giveaway-end-first")) {
+
+                            // Send message to ONLY ADMIN with the permission "bettergiveaways.manage"
+
+                            sender.sendMessage(ChatColor.translateAlternateColorCodes('&', prefix + message));
+    
+                        }
+
                         return true;
 
                     }
 
                     String prefix = plugin.getCustomConfig().getString("chat-prefix");
 
+                    // Start the giveaway
+
                     for (String message : plugin.getCustomConfig().getStringList("giveaway-start")) {
+
+                        // Send message to EVERYONE on the server
 
                         Bukkit.broadcastMessage(ChatColor.translateAlternateColorCodes('&', prefix + message));
 
@@ -115,6 +130,8 @@ public class Giveaway implements CommandExecutor {
 
                 }
 
+                // "/giveaway end" command - Ends the giveaway
+
                 if (args[0].equalsIgnoreCase("end")) {
 
                     if (!currentlyGiveaway) {
@@ -124,7 +141,9 @@ public class Giveaway implements CommandExecutor {
 
                         for (String message : plugin.getCustomConfig().getStringList("giveaway-not-found")) {
 
-                            Bukkit.broadcastMessage(ChatColor.translateAlternateColorCodes('&', prefix + message));
+                            // Send message to ONLY ADMIN with the permission "bettergiveaways.manage"
+
+                            sender.sendMessage(ChatColor.translateAlternateColorCodes('&', prefix + message));
 
                         }
                         return true;
@@ -168,18 +187,20 @@ public class Giveaway implements CommandExecutor {
 
                 }
 
+                // "/giveaway list" command - Lists the players in the giveaway
+
                 if (args[0].equalsIgnoreCase("list")) {
 
                     if (!currentlyGiveaway) {
 
                         String prefix = plugin.getCustomConfig().getString("chat-prefix");
 
-                        for (String message : plugin.getCustomConfig().getStringList("giveaway-end-empty")) {
+                        for (String message : plugin.getCustomConfig().getStringList("giveaway-start-empty")) {
 
                             Bukkit.broadcastMessage(ChatColor.translateAlternateColorCodes('&', prefix + message));
 
                         }
-                        sender.sendMessage(ChatColor.RED + "You have to start the giveaway first!");
+
                         return true;
 
                     }
@@ -190,10 +211,13 @@ public class Giveaway implements CommandExecutor {
                         nicknames.add(player.getName());
                     }
 
-                    sender.sendMessage(ChatColor.GREEN + "Currently in the giveaway:");
+                    // Make Customizable message for this, and placeholder for the list of players
+
                     sender.sendMessage(ChatColor.GREEN + nicknames.toString());
 
                 }
+
+                // "/giveaway reload" command - Reloads the config
 
                 if (args[0].equalsIgnoreCase("reload")) {
                         
@@ -203,8 +227,10 @@ public class Giveaway implements CommandExecutor {
                         String prefix = plugin.getCustomConfig().getString("chat-prefix");
 
                         for (String message : plugin.getCustomConfig().getStringList("giveaway-reload")) {
+                            
+                            Player player = (Player) sender;
 
-                            Bukkit.broadcastMessage(ChatColor.translateAlternateColorCodes('&', prefix + message));
+                            player.sendMessage(ChatColor.translateAlternateColorCodes('&', prefix + message));
 
                         }
                         return true;
@@ -213,7 +239,17 @@ public class Giveaway implements CommandExecutor {
 
             } else {
 
-                sender.sendMessage(ChatColor.RED + "You don't have permission to do that");
+                // If the player doesn't have permission to use the command
+
+                String prefix = plugin.getCustomConfig().getString("chat-prefix");
+
+                for (String message : plugin.getCustomConfig().getStringList("giveaway-no-permission")) {
+                            
+                    Player player = (Player) sender;
+
+                    player.sendMessage(ChatColor.translateAlternateColorCodes('&', prefix + message));
+
+                }
                 return false;
 
             }

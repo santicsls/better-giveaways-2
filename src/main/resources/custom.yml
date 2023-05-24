@@ -37,5 +37,14 @@ giveaway-already-in:
 giveaway-not-found:
   - '&cThere are no giveaways currently.'
 
+giveaway-start-first:
+  - '&cYou have to start the giveaway first.'
+
+giveaway-end-first:
+  - '&cYou have to end the giveaway first.'
+
 giveaway-reload:
   - '&aConfig reloaded.'
+
+giveaway-no-permissions:
+  - '&cNo permissions for this action.'
