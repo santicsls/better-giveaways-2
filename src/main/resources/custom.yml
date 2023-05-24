@@ -15,7 +15,7 @@ giveaway-end-winner:
   - '&6{count} players joined the giveaway. And the winner is... &l{winner}'
 
 giveaway-end-empty:
-  - '&6Nobody joined the giveaway :('
+  - '&6Nobody joined the giveaway.'
 
 # Use {count} to display number of players that joined the giveaway
 giveaway-on-player-join:
@@ -29,10 +29,13 @@ every-x-joined: 5
 # ---------------------------------
 
 giveaway-joined:
-  - '&6You are in the giveaway! Wish you luck!'
+  - '&aYou are in the giveaway. Wish you luck!'
 
 giveaway-already-in:
-  - '&cYou already joined the giveaway!'
+  - '&cYou already joined the giveaway.'
 
 giveaway-not-found:
-  - '&cThere are no giveaways currently :('
+  - '&cThere are no giveaways currently.'
+
+giveaway-reload:
+  - '&aConfig reloaded.'

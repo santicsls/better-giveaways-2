@@ -122,7 +122,7 @@ public class Giveaway implements CommandExecutor {
 
                         String prefix = plugin.getCustomConfig().getString("chat-prefix");
 
-                        for (String message : plugin.getCustomConfig().getStringList("giveaway-end-not-started")) {
+                        for (String message : plugin.getCustomConfig().getStringList("giveaway-not-found")) {
 
                             Bukkit.broadcastMessage(ChatColor.translateAlternateColorCodes('&', prefix + message));
 
@@ -193,6 +193,22 @@ public class Giveaway implements CommandExecutor {
                     sender.sendMessage(ChatColor.GREEN + "Currently in the giveaway:");
                     sender.sendMessage(ChatColor.GREEN + nicknames.toString());
 
+                }
+
+                if (args[0].equalsIgnoreCase("reload")) {
+                        
+                        Bukkit.getServer().getPluginManager().disablePlugin(plugin);
+                        Bukkit.getServer().getPluginManager().enablePlugin(plugin);
+    
+                        String prefix = plugin.getCustomConfig().getString("chat-prefix");
+
+                        for (String message : plugin.getCustomConfig().getStringList("giveaway-reload")) {
+
+                            Bukkit.broadcastMessage(ChatColor.translateAlternateColorCodes('&', prefix + message));
+
+                        }
+                        return true;
+    
                 }
 
             } else {
