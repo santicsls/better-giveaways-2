@@ -3,19 +3,19 @@
 # ---------------------------------
 
 # Prefix is used only for broadcasted messages
-chat-prefix: '&6[&rGIVEAWAY&6]&r '
+chat-prefix: ' &2&lGiveaway &8▸ '
 
 giveaway-start:
-  - '&6&lA NEW GIVEAWAY STARTS RIGHT NOW!!!'
-  - '&rUse &6/giveaway&r to join!'
+  - '&2&lA NEW GIVEAWAY STARTS RIGHT NOW!'
+  - '&fUse &a/giveaway&f to join!'
 
 # Use {winner} to display winner's nickname
 # Use {count} to display number of players that joined the giveaway
 giveaway-end-winner:
-  - '&6{count} players joined the giveaway. And the winner is... &l{winner}'
+  - '&fThe winner is &b&l{winner}&f! Thanks to the &b&l{count}&f players for joined the giveaway.'
 
 giveaway-end-empty:
-  - '&6Nobody joined the giveaway.'
+  - '&fNobody joined the giveaway. It has ended without a winner.'
 
 # Use {count} to display number of players that joined the giveaway
 giveaway-on-player-join:
@@ -27,6 +27,13 @@ every-x-joined: 5
 # ---------------------------------
 # MESSAGES SENT DIRECTLY TO PLAYERS
 # ---------------------------------
+
+giveaway-help:
+  - "&a/giveaway &7| &fJoins the ongoing giveaway."
+  - "&a/giveaway start &7| &fStarts the giveaway."
+  - "&a/giveaway end &7| &fEnds the giveaway and randomly picks a winner."
+  - "&a/giveaway list &7| &fDisplays a list of players that joined the giveaway."
+  - "&a/giveaway reload &7| &fReload the configuration."
 
 giveaway-joined:
   - '&aYou are in the giveaway. Wish you luck!'

@@ -156,6 +156,8 @@ public class Giveaway implements CommandExecutor {
 
                         for (String message : plugin.getCustomConfig().getStringList("giveaway-end-empty")) {
 
+                            // Send message to EVERYONE on the server, because there are no players in the giveaway
+
                             Bukkit.broadcastMessage(ChatColor.translateAlternateColorCodes('&', prefix + message));
 
                         }
@@ -174,6 +176,8 @@ public class Giveaway implements CommandExecutor {
                     String prefix = plugin.getCustomConfig().getString("chat-prefix");
 
                     for (String message : plugin.getCustomConfig().getStringList("giveaway-end-winner")) {
+
+                        // Send message to EVERYONE on the server, with the winner and the amount of players in the giveaway
 
                         String formattedMessage = message.replace("{winner}", winner).replace("{count}", Integer.toString(playerCount));
                         Bukkit.broadcastMessage(ChatColor.translateAlternateColorCodes('&', prefix + formattedMessage));
@@ -197,7 +201,9 @@ public class Giveaway implements CommandExecutor {
 
                         for (String message : plugin.getCustomConfig().getStringList("giveaway-start-empty")) {
 
-                            Bukkit.broadcastMessage(ChatColor.translateAlternateColorCodes('&', prefix + message));
+                            // Send message to ONLY ADMIN with the permission "bettergiveaways.manage"
+
+                            sender.sendMessage(ChatColor.translateAlternateColorCodes('&', prefix + message));
 
                         }
 
@@ -228,14 +234,25 @@ public class Giveaway implements CommandExecutor {
 
                         for (String message : plugin.getCustomConfig().getStringList("giveaway-reload")) {
                             
-                            Player player = (Player) sender;
-
-                            player.sendMessage(ChatColor.translateAlternateColorCodes('&', prefix + message));
+                            sender.sendMessage(ChatColor.translateAlternateColorCodes('&', prefix + message));
 
                         }
                         return true;
     
                 }
+
+                if (args[0].equalsIgnoreCase("help")) {
+                        
+                    String prefix = plugin.getCustomConfig().getString("chat-prefix");
+
+                    for (String message : plugin.getCustomConfig().getStringList("giveaway-help")) {
+                        
+                        sender.sendMessage(ChatColor.translateAlternateColorCodes('&', prefix + message));
+
+                    }
+                    return true;
+
+            }
 
             } else {
 
