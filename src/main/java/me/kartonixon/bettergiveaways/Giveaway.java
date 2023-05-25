@@ -129,6 +129,18 @@ public class Giveaway implements CommandExecutor {
 
                     }
 
+                    // Obtenemos de la config discord-webhook.enabled y si es true, enviamos el mensaje al webhook 
+
+                    if (plugin.getCustomConfig().getBoolean("discord-webhook.enabled")) {
+
+                        String webhookURL = plugin.getCustomConfig().getString("discord-webhook.url");
+                        String embedTitle = plugin.getCustomConfig().getString("discord-webhook.embed.title");
+                        String embedContent = plugin.getCustomConfig().getString("discord-webhook.embed.content");
+                        String embedImage = plugin.getCustomConfig().getString("discord-webhook.embed.image");
+                        DiscordWebhookMessage.sendWebhook(webhookURL, embedTitle, embedContent, embedImage);
+
+                    }
+
                     currentlyGiveaway = true;
                     return true;
 

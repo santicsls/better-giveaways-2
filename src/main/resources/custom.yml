@@ -5,11 +5,23 @@
 # Prefix is used only for broadcasted messages
 chat-prefix: ' &2&lGiveaway &8▸ '
 
+# ---------------------------------
+# DISCORD WEBHOOK ON /giveaway start
+# ---------------------------------
+
+discord-webhook:
+  enabled: true
+  url: 'https://discord.com/api/webhooks/1111033507301576704/nklrm-K2_WFxlCOZ80lqBhT1xcf5oOfEj1lp2OXRGAJW6Qrlh9bFHhdu9XqdrgDEmRqa'
+  embed:
+    title: 'A NEW GIVEAWAY STARTS RIGHT NOW!'
+    content: 'Join to the server and use /giveaway'
+    image: 'https://minecraft-api.com/api/skins/iBiind/head'
+
 giveaway-start:
-  - '&r'
+  - '&7&l&m<--------------------------->'
   - '&2&lA NEW GIVEAWAY STARTS RIGHT NOW!'
   - '&fUse &a/giveaway&f to join!'
-  - '&f'
+  - '&7&l&m<--------------------------->'
 
 # Use {winner} to display winner's nickname
 # Use {count} to display number of players that joined the giveaway
@@ -44,7 +56,7 @@ giveaway-already-in:
   - '&cYou already joined the giveaway.'
 
 giveaway-not-found:
-  - '&cThere are no giveaways currently. You have to start the giveaway first'
+  - '&cThere are no giveaways currently.'
 
 giveaway-start-first:
   - '&cList not found. You have to start the giveaway first.'
