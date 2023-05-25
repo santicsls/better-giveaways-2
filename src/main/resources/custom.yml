@@ -10,8 +10,8 @@ chat-prefix: ' &2&lGiveaway &8▸ '
 # ---------------------------------
 
 discord-webhook:
-  enabled: true
-  url: 'https://discord.com/api/webhooks/1111033507301576704/nklrm-K2_WFxlCOZ80lqBhT1xcf5oOfEj1lp2OXRGAJW6Qrlh9bFHhdu9XqdrgDEmRqa'
+  enabled: false
+  url: 'ENTER YOUR WEBHOOK URL HERE'
   embed:
     title: 'A NEW GIVEAWAY STARTS RIGHT NOW!'
     content: 'Join to the server and use /giveaway'

@@ -32,7 +32,13 @@ public class Giveaway implements CommandExecutor {
                 
                 if (!(sender instanceof Player)) {
 
-                    sender.sendMessage("*console goes brrrr*");
+                    String prefix = plugin.getCustomConfig().getString("chat-prefix");
+
+                    for (String message : plugin.getCustomConfig().getStringList("giveaway-help")) {
+                        
+                        sender.sendMessage(ChatColor.translateAlternateColorCodes('&', prefix + message));
+
+                    }
 
                 } else {
 
@@ -56,17 +62,18 @@ public class Giveaway implements CommandExecutor {
 
                             playersInGiveaway.add(player);
 
+                            String prefix = plugin.getCustomConfig().getString("chat-prefix");
+
                             for (String message : plugin.getCustomConfig().getStringList("giveaway-joined")) {
 
-                                player.sendMessage(ChatColor.translateAlternateColorCodes('&', message));
+                                sender.sendMessage(ChatColor.translateAlternateColorCodes('&', prefix + message));
+
 
                             }
 
                             int mod = plugin.getCustomConfig().getInt("every-x-joined");
 
                             if (playersInGiveaway.size() % mod == 0) {
-
-                                String prefix = plugin.getCustomConfig().getString("chat-prefix");
 
                                 for (String message : plugin.getCustomConfig().getStringList("giveaway-on-player-join")) {
 
@@ -79,9 +86,11 @@ public class Giveaway implements CommandExecutor {
 
                         } else {
 
+                            String prefix = plugin.getCustomConfig().getString("chat-prefix");
+
                             for (String message : plugin.getCustomConfig().getStringList("giveaway-already-in")) {
 
-                                player.sendMessage(ChatColor.translateAlternateColorCodes('&', message));
+                                player.sendMessage(ChatColor.translateAlternateColorCodes('&', prefix + message));
 
                             }
 
@@ -266,6 +275,7 @@ public class Giveaway implements CommandExecutor {
                         sender.sendMessage(ChatColor.translateAlternateColorCodes('&', prefix + message));
 
                     }
+                    
                     return true;
 
                 }
