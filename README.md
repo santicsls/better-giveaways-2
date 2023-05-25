@@ -8,8 +8,6 @@
 > Simple and easy to use Minecraft giveaway system
 > Made by kartonixon, recoded by santicsls
 
-![](preview.gif)
-
 A Minecraft Spigot plugin that allows players to create simple giveaways. The winner will always be chosen at random, making the giveaways fair for participants.
 
 Share your thoughts at [SpigotMC](https://www.spigotmc.org/resources/bettergiveaways.83231/) ❤
