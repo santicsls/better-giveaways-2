@@ -10,7 +10,7 @@
 
 A Minecraft Spigot plugin that allows players to create simple giveaways. The winner will always be chosen at random, making the giveaways fair for participants.
 
-Share your thoughts at [SpigotMC](https://www.spigotmc.org/resources/bettergiveaways.83231/) ❤
+Share your thoughts at [SpigotMC](https://www.spigotmc.org/resources/%E2%9C%A8-bettergiveaways-2-%E2%9C%A8-full-custom-discord-webhook-lightweight-%E2%9C%85.110046/) ❤
 
 Tested Minecraft Versions: **1.16, 1.18.2 (LATEST BUILD)**
 
