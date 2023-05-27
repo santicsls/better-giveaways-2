@@ -5,6 +5,10 @@
 # Prefix is used only for broadcasted messages
 chat-prefix: ' &2&lGiveaway &8▸ '
 
+# MySQL Config
+mysql:
+  enabled: false
+
 # ---------------------------------
 # DISCORD WEBHOOK ON /giveaway start
 # ---------------------------------
@@ -69,3 +73,6 @@ giveaway-reload:
 
 giveaway-no-permission:
   - '&cNo permissions for this action.'
+
+giveaway-debug:
+  - '&aDebug completed.'

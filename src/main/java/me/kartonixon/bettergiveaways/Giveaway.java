@@ -7,20 +7,33 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
+import me.kartonixon.bettergiveaways.mysql.MySQL;
+import me.kartonixon.bettergiveaways.mysql.SQLGetter;
+
 import java.util.ArrayList;
 import java.util.Random;
+import java.util.UUID;
 
 public class Giveaway implements CommandExecutor {
     
     private final BetterGiveaways plugin;
 
-    private boolean currentlyGiveaway;
-    private ArrayList<Player> playersInGiveaway;
+    public static boolean currentlyGiveaway;
+    public static ArrayList<Player> playersInGiveaway;
+
+    public MySQL SQL;
+    public SQLGetter data;
+    
 
     public Giveaway (BetterGiveaways plugin) {
         this.plugin = plugin;
-        this.playersInGiveaway = new ArrayList<Player>();
-        this.currentlyGiveaway = false;
+        Giveaway.playersInGiveaway = new ArrayList<Player>();
+        currentlyGiveaway = false;
+        
+        // MySQL connection
+        this.SQL = new MySQL();
+        this.data = new SQLGetter(this.plugin);
+
     }
 
     @Override
@@ -30,6 +43,8 @@ public class Giveaway implements CommandExecutor {
 
             if (args.length == 0) {
                 
+                // If the command is executed by the console:
+
                 if (!(sender instanceof Player)) {
 
                     String prefix = plugin.getCustomConfig().getString("chat-prefix");
@@ -43,6 +58,8 @@ public class Giveaway implements CommandExecutor {
                 } else {
 
                     Player player = (Player) sender;
+
+                    // If currently there is no giveaway running
 
                     if (!currentlyGiveaway) {
 
@@ -58,16 +75,23 @@ public class Giveaway implements CommandExecutor {
 
                     } else {
 
+                        // If giveaway is running and the player is not in the giveaway
+
                         if (!playersInGiveaway.contains(player)) {
 
                             playersInGiveaway.add(player);
+
+                            if (BetterGiveaways.mysql) {
+
+                                this.data.updateArrayList(playersInGiveaway);
+
+                            }
 
                             String prefix = plugin.getCustomConfig().getString("chat-prefix");
 
                             for (String message : plugin.getCustomConfig().getStringList("giveaway-joined")) {
 
                                 sender.sendMessage(ChatColor.translateAlternateColorCodes('&', prefix + message));
-
 
                             }
 
@@ -105,6 +129,8 @@ public class Giveaway implements CommandExecutor {
             }
 
             if (sender.hasPermission("bettergiveaways.manage")) {
+
+                // "/giveaway start" command - Starts the giveaway
 
                 if (args[0].equalsIgnoreCase("start")) {
 
@@ -146,7 +172,19 @@ public class Giveaway implements CommandExecutor {
                         String embedTitle = plugin.getCustomConfig().getString("discord-webhook.embed.title");
                         String embedContent = plugin.getCustomConfig().getString("discord-webhook.embed.content");
                         String embedImage = plugin.getCustomConfig().getString("discord-webhook.embed.image");
-                        DiscordWebhookMessage.sendWebhook(webhookURL, embedTitle, embedContent, embedImage);
+                        //DiscordWebhookMessage.sendWebhook(webhookURL, embedTitle, embedContent, embedImage);
+
+                    }
+
+                    // Si en database.yml está activado el uso de MySQL, se añade un registro a la tabla giveaways
+
+                    if (BetterGiveaways.mysql) {
+
+                        if (this.data.createGiveaways()) {
+                            sender.sendMessage("Giveaway created in database!");
+                        } else {
+                            sender.sendMessage("Error creating giveaway in database.");
+                        }
 
                     }
 
@@ -266,12 +304,31 @@ public class Giveaway implements CommandExecutor {
     
                 }
 
+                // "/giveaway help" command - Shows the help message
+
                 if (args[0].equalsIgnoreCase("help")) {
                         
                     String prefix = plugin.getCustomConfig().getString("chat-prefix");
 
                     for (String message : plugin.getCustomConfig().getStringList("giveaway-help")) {
                         
+                        sender.sendMessage(ChatColor.translateAlternateColorCodes('&', prefix + message));
+
+                    }
+                    
+                    return true;
+
+                }
+
+                // "/giveaway debug" command - Shows the debug message
+
+                if (args[0].equalsIgnoreCase("debug")) {
+                        
+                    String prefix = plugin.getCustomConfig().getString("chat-prefix");
+
+                    for (String message : plugin.getCustomConfig().getStringList("giveaway-debug")) {
+                        
+                        //this.data.getGiveaways();
                         sender.sendMessage(ChatColor.translateAlternateColorCodes('&', prefix + message));
 
                     }
